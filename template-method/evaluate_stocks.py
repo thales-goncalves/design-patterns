@@ -1,17 +1,13 @@
 # -*- coding: UTF-8 -*-
-from stock_exchange import evaluate_for_more_than_ten_thousand_dollars, evaluate_for_more_than_three_stocks, evaluate_end
+
+from stock_exchange import twenty_percent, ten_percent, five_percent, two_percent
 
 
 class evaluate_stocks:
+    def evaluate(self, wallet, strategy):
 
-    def evaluate(self, wallet):
-
-        amount = evaluate_for_more_than_ten_thousand_dollars(
-            evaluate_for_more_than_three_stocks(
-                evaluate_end()
-            )
-        ).evaluate(wallet)
-        return amount
+        evaluate = strategy.evaluate(wallet)
+        print(evaluate)
 
 
 if __name__ == '__main__':
@@ -20,11 +16,16 @@ if __name__ == '__main__':
 
     wallet = Wallet()
     wallet.append_stock(Stock('Microsoft', 40))
-    wallet.append_stock(Stock('Google', 10))
-    wallet.append_stock(Stock('Apple', 50))
+    wallet.append_stock(Stock('Google', 100))
+    wallet.append_stock(Stock('Apple', 30))
 
     exchange = evaluate_stocks()
 
-    evaluateStocks = exchange.evaluate(wallet)
-
-    print(evaluateStocks)
+    print('20%:')
+    exchange.evaluate(wallet, twenty_percent())
+    print('10%:')
+    exchange.evaluate(wallet, ten_percent())
+    print('5%:')
+    exchange.evaluate(wallet, five_percent())
+    print('2%:')
+    exchange.evaluate(wallet, two_percent())
