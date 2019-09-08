@@ -5,6 +5,10 @@ from abc import ABCMeta, abstractmethod
 class template_evaluate:
     __metaclass__ = ABCMeta
 
+
+class template_evaluate:
+    __metaclass__ = ABCMeta
+
     def evaluate(self, wallet):
         if self.special_offer(wallet):
             return self.max_evaluate(wallet)
@@ -47,11 +51,19 @@ class ten_percent(template_evaluate):
         else:
             return False
 
+
+<< << << < HEAD
+   def max_evaluate(self, wallet):
+        return wallet.amount * 1.12
+
+    def min_evaluate(self, wallet):
+== =====
     def max_evaluate(self, wallet):
         return wallet.amount * 1.12
 
     def min_evaluate(self, wallet):
-        return wallet.amount * 1.10
+>>>>>> > 1995207f79798210f9b9ff7432f2f6e586a7191a
+   return wallet.amount * 1.10
 
 
 class five_percent:
