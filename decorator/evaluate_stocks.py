@@ -4,9 +4,9 @@ from stock_exchange import twenty_percent, ten_percent, five_percent, two_percen
 
 
 class evaluate_stocks:
-    def evaluate(self, wallet, method):
+    def evaluate(self, wallet, exchange):
 
-        profit = method.evaluate(wallet)
+        profit = exchange.evaluate(wallet)
         return profit
 
 
@@ -23,12 +23,14 @@ if __name__ == '__main__':
 
     profit = exchange.evaluate(wallet, twenty_percent())
     print('Your current profit: US$', profit)
-
     profit = exchange.evaluate(wallet, ten_percent())
     print('Your current profit: US$', profit)
-
     profit = exchange.evaluate(wallet, five_percent())
     print('Your current profit: US$', profit)
-
     profit = exchange.evaluate(wallet, two_percent())
+    print('Your current profit: US$', profit)
+
+    print('\n')
+
+    profit = exchange.evaluate(wallet, twenty_percent(two_percent()))
     print('Your current profit: US$', profit)

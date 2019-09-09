@@ -2,14 +2,36 @@
 from abc import ABCMeta, abstractmethod
 
 
-class template_evaluate:
+class profit:
+    __metaclass__ = ABCMeta
+
+    def __init__(self, profit_evaluator=None):
+        self.__profit_evaluator = profit_evaluator
+
+    def other_profit_evaluator(self, wallet):
+        if self.__profit_evaluator is None:
+            return 0
+        return self.__profit_evaluator.evaluate(wallet)
+
+    @abstractmethod
+    def evaluate(self, wallet):
+        pass
+
+
+def special_profit(function_or_method):
+    def wrapper(self, wallet):
+        return function_or_method(self, wallet) + 1.0
+    return wrapper
+
+
+class template_evaluate(profit):
     __metaclass__ = ABCMeta
 
     def evaluate(self, wallet):
         if self.special_offer(wallet):
-            return self.max_evaluate(wallet)
+            return self.max_evaluate(wallet) + self.other_profit_evaluator(wallet)
         else:
-            return self.min_evaluate(wallet)
+            return self.min_evaluate(wallet) + self.other_profit_evaluator(wallet)
 
     @abstractmethod
     def special_offer(self, wallet):
@@ -54,13 +76,14 @@ class ten_percent(template_evaluate):
         return wallet.amount * 0.10
 
 
-class five_percent:
+class five_percent(profit):
 
     def evaluate(self, wallet):
-        return wallet.amount * 0.05
+        return wallet.amount * 0.05 + self.other_profit_evaluator(wallet)
 
 
-class two_percent:
+class two_percent(profit):
 
+    @special_profit
     def evaluate(self, wallet):
-        return wallet.amount * 0.02
+        return wallet.amount * 0.02 + self.other_profit_evaluator(wallet)

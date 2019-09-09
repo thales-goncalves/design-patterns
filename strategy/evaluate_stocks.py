@@ -1,15 +1,14 @@
 # -*- coding: UTF-8 -*-
 
-from stock_exchange import evaluate_for_more_than_ten_dollars, evaluate_for_more_than_three_stocks
+from stock_exchange import evaluate_for_more_than_one_hundred_dollars, evaluate_for_more_than_three_stocks
 
 
 class evaluate_stocks:
 
     def evaluate(self, wallet, strategy):
 
-        evaluate = strategy(wallet)
-
-        print(evaluate)
+        profit = strategy(wallet)
+        return profit
 
 
 if __name__ == '__main__':
@@ -18,10 +17,13 @@ if __name__ == '__main__':
 
     wallet = Wallet()
     wallet.append_stock(Stock('Microsoft', 40))
-    wallet.append_stock(Stock('Google', 10))
-    wallet.append_stock(Stock('Apple', 50))
+    wallet.append_stock(Stock('Google', 30))
+    wallet.append_stock(Stock('Apple', 30))
 
     exchange = evaluate_stocks()
 
-    exchange.evaluate(wallet, evaluate_for_more_than_ten_dollars)
-    exchange.evaluate(wallet, evaluate_for_more_than_three_stocks)
+    profit = exchange.evaluate(
+        wallet, evaluate_for_more_than_one_hundred_dollars)
+    print('Your current profit: US$', profit)
+    profit = exchange.evaluate(wallet, evaluate_for_more_than_three_stocks)
+    print('Your current profit: US$', profit)

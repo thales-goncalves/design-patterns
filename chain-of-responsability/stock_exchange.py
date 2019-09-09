@@ -7,8 +7,8 @@ class evaluate_for_more_than_ten_thousand_dollars:
         self.__next_evaluate = next_evaluate
 
     def evaluate(self, wallet):
-        if wallet.amount > 10000:
-            return wallet.amount * 1.1
+        if wallet.amount >= 100:
+            return wallet.amount * 0.10
         else:
             return self.__next_evaluate.evaluate(wallet)
 
@@ -20,7 +20,7 @@ class evaluate_for_more_than_three_stocks:
 
     def evaluate(self, wallet):
         if wallet.stocks >= 3:
-            return wallet.amount * 1.05
+            return wallet.amount * 0.05
         else:
             return self.__next_evaluate.evaluate(wallet)
 
