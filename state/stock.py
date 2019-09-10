@@ -7,6 +7,9 @@ class State:
 
     __metaclass__ = ABCMeta
 
+    def __init__(self):
+        self.extra_profit_applied = False
+
     @abstractmethod
     def apply_extra_profit(self, wallet):
         pass
@@ -26,7 +29,11 @@ class State:
 
 class OnHold(State):
     def apply_extra_profit(self, wallet):
-        wallet.add_extra_profit(wallet.amount * 0.01)
+        if not self.extra_profit_applied:
+            wallet.add_extra_profit(wallet.amount * 0.01)
+            self.extra_profit_applied = True
+        else:
+            raise Exception('Extra profit already applied!')
 
     def approve(self, wallet):
         wallet.state = Approved()
@@ -40,7 +47,11 @@ class OnHold(State):
 
 class Approved(State):
     def apply_extra_profit(self, wallet):
-        wallet.add_extra_profit(wallet.amount * 0.05)
+        if not self.extra_profit_applied:
+            wallet.add_extra_profit(wallet.amount * 0.05)
+            self.extra_profit_applied = True
+        else:
+            raise Exception('Extra profit already applied!')
 
     def approve(self, wallet):
         raise Exception("Wallet is already APPROVED")
