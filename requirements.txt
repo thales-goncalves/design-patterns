@@ -1,1 +1,1 @@
-sqlalquemy = 
+sqlalquemy = 1.37.2
