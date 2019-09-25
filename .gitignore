@@ -1,0 +1,6 @@
+
+#Virtual enviroment folder
+env
+
+#
+*pycache*
