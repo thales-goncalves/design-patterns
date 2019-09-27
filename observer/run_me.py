@@ -4,20 +4,18 @@ if __name__ == "__main__":
     from observer.student import Student
 
     observers = [to_father, to_mother]
-    
-    call_to_parents = Student(
-        'Harry', 
-        'James', 
-        'Lilian', 
-        'Princetown Hospital',observers=observers )
 
+    call_to_parents = Student(
+        'Harry',
+        'James',
+        'Lilian',
+        'Princetown Hospital', observers=observers)
 
     observers = [to_hospital]
-    
+
     call_to_hospital = Student(
-        'Taylor', 
-        'Scott', 
-        'Suzan', 
+        'Taylor',
+        'Scott',
+        'Suzan',
         'NY Hospital',
-        observers=observers )
-    
+        observers=observers)

@@ -1,9 +1,11 @@
 # -*- coding: UTF-8 -*-
 from observer.observer import to_father, to_mother, to_hospital
 
+
 class Student:
 
-    def __init__(self, name, father, mother, hospital, description='', observers=[]):
+    def __init__(self, name, father, mother, hospital, description='',
+                 observers=[]):
         self.__name = name
         if len(description) > 20:
             raise Exception("Description cannot have more than 20 characters!")
