@@ -1,4 +1,4 @@
-from .builder import ComputerBuilder
+from .technician import Technician
 from .builder_interface import IBuilder
 
 

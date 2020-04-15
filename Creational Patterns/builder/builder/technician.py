@@ -3,7 +3,7 @@ from .builder_interface import IBuilder
 from .computer import Computer
 
 
-class ComputerBuilder(IBuilder):
+class Technician(IBuilder):
     def __init__(self) -> None:
         self.reset()
 

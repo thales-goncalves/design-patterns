@@ -2,11 +2,11 @@
 
 if __name__ == "__main__":
 
-    from builder.builder import ComputerBuilder
+    from builder.technician import Technician
     from builder.technical_leader import TechnicalLeader
     import pprint
 
-    builder = ComputerBuilder()
+    builder = Technician()
     director = TechnicalLeader()
     director.builder = builder
 
